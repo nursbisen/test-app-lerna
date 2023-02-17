@@ -1,6 +1,6 @@
 import { action, makeAutoObservable, observable } from 'mobx';
 
-import { FieldType } from '../types.ts/fields';
+import { FieldType } from '../types/fields';
 
 class FieldsStore {
   list: FieldType[] = []

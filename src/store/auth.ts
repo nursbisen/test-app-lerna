@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
 
-import { UserInfoType } from './../types.ts/auth';
+import { UserInfoType } from '../types/auth';
 
 // Данные для авторизации
 const USER_INFO: UserInfoType = {
