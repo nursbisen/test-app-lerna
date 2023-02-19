@@ -1,4 +1,4 @@
-import { action, makeAutoObservable, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 import { FieldType } from '../types/fields';
 
@@ -6,19 +6,11 @@ class FieldsStore {
   list: FieldType[] = []
 
   constructor() {
-    makeAutoObservable(
-      this,
-      {
-        list: observable.ref,
-        getFields: action,
-      },
-      {
-        autoBind: true,
-      });
+    makeAutoObservable(this);
   }
 
   getFields() {
-    getRandomFields().forEach((field) => this.list.push(field));
+    this.list = getRandomFields();
   }
 }
 

@@ -9,6 +9,7 @@ const useContainer = () => {
     initialValues: {
       list: fieldsStore.list,
     },
+    enableReinitialize: true,
     onSubmit: () => {},
   });
 
