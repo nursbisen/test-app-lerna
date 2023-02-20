@@ -15,8 +15,11 @@ const useContainer = () => {
     },
   });
 
+  const isLoading = AuthStore.status === 'loading';
+
   return {
-    formik
+    formik,
+    isLoading
   };
 };
 

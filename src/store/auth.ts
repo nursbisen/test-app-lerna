@@ -1,35 +1,30 @@
-import { action, makeObservable, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
+import api from '../api';
 import { UserInfoType } from '../types/auth';
 
-// Данные для авторизации
-const USER_INFO: UserInfoType = {
-  login: 'admin',
-  password: 'admin',
-};
+import { FlowReturn } from './types';
 
 // Первый опыт на Mobx :)
 
 class Auth {
   isAuthorized = false;
+  status: 'init' | 'loading' | 'success' | 'error' = 'init';
 
   constructor() {
-    makeObservable(
-      this,
-      {
-        isAuthorized: observable,
-        login: action,
-        logout: action,
-      },
-      {
-        autoBind: true,
-      },
-    );
+    makeAutoObservable(this);
   }
 
-  login(userInfo: UserInfoType) {
-    if (userInfo.login === USER_INFO.login && userInfo.password === USER_INFO.password) {
-      this.isAuthorized = true;
+  *login(userInfo: UserInfoType): FlowReturn<typeof api.auth> {
+    try {
+      this.status = 'loading';
+
+      const response = yield api.auth(userInfo);
+      
+      this.isAuthorized = response;
+      this.status = 'success';
+    } catch(e) {
+      this.status = 'error';
     }
   }
   

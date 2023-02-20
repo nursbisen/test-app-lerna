@@ -1,7 +1,10 @@
 import { useFormikContext } from 'formik';
-import { Button } from '../UI';
 
-const SubmitButton = ({ children, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+import { Button, Loader } from '../UI';
+
+import { SubmitButtonType } from './types';
+
+const SubmitButton = ({ children, isLoading = false, ...rest }: SubmitButtonType) => {
   const { handleSubmit } = useFormikContext();
 
   return (
@@ -11,6 +14,11 @@ const SubmitButton = ({ children, ...rest }: React.ButtonHTMLAttributes<HTMLButt
       {...rest}
     >
       {children}
+      {isLoading && (
+        <div className="absolute left-1 top-[2px]">
+          <Loader className="w-8 h-8" />
+        </div>
+      )}
     </Button>
   );
 };

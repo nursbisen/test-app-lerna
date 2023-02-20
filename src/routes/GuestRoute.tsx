@@ -4,12 +4,12 @@ import { Navigate } from 'react-router';
 import auth from '../store/auth';
 import { ROUTES } from '../constants/routes';
 
-const GuestRoute = observer(({ children, redirectPath = ROUTES.MAIN }: { children: JSX.Element, redirectPath?: string }) => {
+const GuestRoute = ({ children, redirectPath = ROUTES.MAIN }: { children: JSX.Element, redirectPath?: string }) => {
   if (auth.isAuthorized) {
     return <Navigate to={redirectPath} replace />;
   }
 
   return children;
-});
+};
 
-export default GuestRoute;
+export default observer(GuestRoute);

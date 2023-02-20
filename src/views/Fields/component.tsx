@@ -1,15 +1,15 @@
 import { FormikProvider } from 'formik';
 import { observer } from 'mobx-react-lite';
 
-import { Button } from '../../components/UI';
+import { Button, Loader } from '../../components/UI';
 import { InputField } from '../../components/formik';
 
 import useContainer from './hook';
 
 const Fields = () => {
-  const { formik, handleLogout } = useContainer();
+  const { formik, isLoading, handleLogout } = useContainer();
 
-  return (
+  return !isLoading ? (
     <>
       <div className="w-full rounded-2xl bg-white shadow-2xl border-none pt-5 pb-6 px-7 flex flex-col gap-5">
         <h1 className="m-0 text-gray-700 text-xl font-bold">Динамические поля</h1>
@@ -23,6 +23,8 @@ const Fields = () => {
         <Button type="button" onClick={handleLogout}>Выйти</Button>
       </div>
     </>
+  ) : (
+    <div className="mx-64 mt-52"><Loader /></div>
   );
 };
 

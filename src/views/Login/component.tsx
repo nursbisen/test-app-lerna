@@ -6,7 +6,7 @@ import { InputField, SubmitButton } from '../../components/formik';
 import useContainer from './hook';
 
 const Login = () => {
-  const { formik } = useContainer();
+  const { formik, isLoading } = useContainer();
 
   return (
     <div className="w-full mt-40 flex justify-center">
@@ -15,7 +15,7 @@ const Login = () => {
         <FormikProvider value={formik}>
           <InputField name="login" label="Логин" />
           <InputField type="password" name="password" label="Пароль" />
-          <SubmitButton className="w-52 mt-1">Войти</SubmitButton>
+          <SubmitButton className="w-52 mt-1" isLoading={isLoading}>Войти</SubmitButton>
         </FormikProvider>
       </div>
     </div>
