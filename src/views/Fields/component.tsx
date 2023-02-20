@@ -24,7 +24,7 @@ const Fields = () => {
       </div>
     </>
   ) : (
-    <div className="mx-64 mt-52"><Loader /></div>
+    <div className="flex w-full justify-center mt-52"><Loader className="w-[200px] h-[200px]" /></div>
   );
 };
 
