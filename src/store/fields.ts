@@ -1,3 +1,4 @@
+import { persist } from 'mobx-persist';
 import { makeAutoObservable } from 'mobx';
 
 import api from '../api';
@@ -6,7 +7,7 @@ import { FieldType } from '../types/fields';
 import { FlowReturn } from './types';
 
 class FieldsStore {
-  list: FieldType[] = [];
+  @persist('list') list: FieldType[] = [];
   status: 'init' | 'loading' | 'success' | 'error' = 'init';
 
   constructor() {
@@ -25,8 +26,6 @@ class FieldsStore {
       this.status = 'error';
     }
   }
-}
+};
 
-const store = new FieldsStore();
-
-export default store;
+export default FieldsStore;

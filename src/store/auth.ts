@@ -1,3 +1,4 @@
+import { persist } from 'mobx-persist';
 import { makeAutoObservable } from 'mobx';
 
 import api from '../api';
@@ -7,8 +8,8 @@ import { FlowReturn } from './types';
 
 // Первый опыт на Mobx :)
 
-class Auth {
-  isAuthorized = false;
+class AuthStore {
+  @persist isAuthorized = false;
   status: 'init' | 'loading' | 'success' | 'error' = 'init';
 
   constructor() {
@@ -34,6 +35,4 @@ class Auth {
 
 };
 
-const store = new Auth();
-
-export default store;
+export default AuthStore;

@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 
-import AuthStore from '../../store/auth';
+import store from '../../store';
 
 const useContainer = () => {
   const formik = useFormik({
@@ -10,12 +10,12 @@ const useContainer = () => {
     },
     onSubmit: (userInfo) => {
       if (userInfo.login && userInfo.password) {
-        AuthStore.login(userInfo);
+        store.authStore.login(userInfo);
       }
     },
   });
 
-  const isLoading = AuthStore.status === 'loading';
+  const isLoading = store.authStore.status === 'loading';
 
   return {
     formik,

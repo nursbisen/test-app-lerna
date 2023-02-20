@@ -1,26 +1,25 @@
 import { useEffect } from 'react';
 import { useFormik } from 'formik';
 
-import authStore from '../../store/auth';
-import FieldsStore from '../../store/fields';
+import store from '../../store';
 
 const useContainer = () => {
   const formik = useFormik({
     initialValues: {
-      list: FieldsStore.list,
+      list: store.fieldsStore.list,
     },
     enableReinitialize: true,
     onSubmit: () => {},
   });
 
   const handleLogout = () => {
-    authStore.logout()
+    store.authStore.logout()
   };
 
-  const isLoading = FieldsStore.status === 'loading';
+  const isLoading = store.fieldsStore.status === 'loading';
 
   useEffect(() => {
-    FieldsStore.getFields();
+    store.fieldsStore.getFields();
   }, []);
   
   return {
