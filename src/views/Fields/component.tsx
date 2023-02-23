@@ -11,7 +11,7 @@ const Fields = () => {
 
   return !isLoading ? (
     <>
-      <div className="w-full rounded-2xl bg-white shadow-2xl border-none pt-5 pb-6 px-7 flex flex-col gap-5">
+      <div className="mx-60 rounded-2xl bg-white shadow-2xl border-none pt-5 pb-6 px-7 flex flex-col gap-5">
         <h1 className="m-0 text-gray-700 text-xl font-bold">Динамические поля</h1>
         <FormikProvider value={formik}>
           {formik.values.list.map((field, index) => (
@@ -19,7 +19,7 @@ const Fields = () => {
           ))}
         </FormikProvider>
       </div>
-      <div className="fixed right-20">
+      <div className="fixed right-40">
         <Button type="button" onClick={handleLogout}>Выйти</Button>
       </div>
     </>

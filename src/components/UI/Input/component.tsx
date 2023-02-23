@@ -15,7 +15,7 @@ const Input = ({ label, className, value, onChange, ...rest }: InputType) => (
       {...rest}
     />
     <label
-      className="absolute py-[1px] px-[3px] leading-none text-[12px] ml-1 pointer-events-none transition-all duration-150 text-gray-500 bg-white peer-placeholder-shown:text-[14px] peer-placeholder-shown:left-2 peer-placeholder-shown:top-2 -top-[10px] left-4 peer-focus:text-[12px] peer-focus:-top-[10px] peer-focus:left-4"
+      className="absolute py-[1px] px-[3px] leading-none text-[12px] ml-1 pointer-events-none transition-all duration-150 text-gray-500 group-hover:text-gray-900 bg-white peer-placeholder-shown:text-[14px] peer-placeholder-shown:left-2 peer-placeholder-shown:top-2 -top-[10px] left-4 peer-focus:text-[12px] peer-focus:-top-[10px] peer-focus:left-4"
     >
       {label}
     </label>
